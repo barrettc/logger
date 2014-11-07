@@ -2,7 +2,7 @@
  
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
            id="com.scispike.logger"
-      version="0.0.1">
+      version="0.0.2">
     <name>Logger</name>
     <description>Get logs</description>
     <license>MIT</license>

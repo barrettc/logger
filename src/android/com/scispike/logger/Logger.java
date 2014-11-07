@@ -1,4 +1,4 @@
-package com.amchealth.logger;
+package com.scispike.logger;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
