@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
  
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-           id="com.amchealth.logger"
+           id="com.scispike.logger"
       version="0.0.1">
     <name>Logger</name>
     <description>Get logs</description>
@@ -19,11 +19,11 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Logger">
-                <param name="android-package" value="com.amchealth.logger.Logger"/>
+                <param name="android-package" value="com.scispike.logger.Logger"/>
             </feature>
         </config-file>
  
-        <source-file src="src/android/com/amchealth/logger/Logger.java" target-dir="src/com/amchealth/logger" /> 
+        <source-file src="src/android/com/scispike/logger/Logger.java" target-dir="src/com/scispike/logger" /> 
         
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.READ_LOGS" />

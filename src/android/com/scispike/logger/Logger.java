@@ -49,23 +49,29 @@ public class Logger extends CordovaPlugin {
 		cordova.getThreadPool().execute(new Runnable() {
 			public void run() {
 				try {
-					Process process = Runtime.getRuntime().exec(new String[]{"logcat", "-v", "time"});
+					Process process = Runtime.getRuntime().exec(new String[]{"logcat", "-v", "threadtime", "-t", String.valueOf(numLogs)});
 					BufferedReader reader = 
 					    new BufferedReader(new InputStreamReader(process.getInputStream()));
 					
 					int count = 0;
 					String separator = System.getProperty("line.separator");
 					StringBuilder buffer = new StringBuilder();
-					String nextLine;
+					String nextLine=null;
+					Log.d(TAG, "searching for: "+ searchTerm);
 					while (count < numLogs) {
 						nextLine = reader.readLine();
-						if (nextLine.contains(searchTerm)) {
+						if (nextLine != null 
+								//&& (searchTerm== null
+								//|| nextLine.contains(searchTerm))
+								) {
 							buffer.append(nextLine).append(separator);
-							count++;
 						}				        						
+						count++;
 					}
-					Log.d(TAG, buffer.toString());
-					callbackContext.success(buffer.toString());								
+					String result = buffer.toString();
+					
+					Log.d(TAG, "read: "+ count + "; ending in: "+ nextLine+";; included: "+result.indexOf(nextLine));
+					callbackContext.success(result);								
 					
 				} catch (Exception e) {
 					Log.e(TAG, Log.getStackTraceString(e));
